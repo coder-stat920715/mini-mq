@@ -1,0 +1,7 @@
+services:
+  broker:
+    build: .
+    ports: ["9092:9092", "8080:8080"]
+    volumes: ["mq-data:/data"]
+volumes:
+  mq-data:

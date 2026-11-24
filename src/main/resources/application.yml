@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: mini-mq
+
+server:
+  port: 8080            # admin REST + actuator (reactive). The binary data plane listens on mq.port.
+
+mq:
+  port: 9092
+  data-dir: ./data
+  segment-bytes: 268435456
+  retention: 7d
+  retention-bytes: -1
+  flush-interval: 1s
+  min-insync-replicas: 1
+  assignment-strategy: STICKY   # RANGE | ROUND_ROBIN | STICKY
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
